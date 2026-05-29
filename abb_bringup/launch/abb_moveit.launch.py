@@ -4,6 +4,7 @@ import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
+from launch.conditions import IfCondition
 from launch.actions import OpaqueFunction
 from launch.substitutions import (
     LaunchConfiguration,
@@ -29,6 +30,7 @@ def launch_setup(context, *args, **kwargs):
     support_package = LaunchConfiguration("support_package")
     moveit_config_package = LaunchConfiguration("moveit_config_package")
     moveit_config_file = LaunchConfiguration("moveit_config_file")
+    launch_rviz = LaunchConfiguration("launch_rviz")
 
     # MoveIt configuration
     moveit_config = (
@@ -116,6 +118,7 @@ def launch_setup(context, *args, **kwargs):
         parameters=[
             moveit_config.to_dict(),
         ],
+        condition=IfCondition(launch_rviz),
     )
 
     # Static TF
@@ -166,6 +169,13 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "moveit_config_file",
             description="Name of the SRDF file",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "launch_rviz",
+            default_value="true",
+            description="Launch RViz?",
         )
     )
 
