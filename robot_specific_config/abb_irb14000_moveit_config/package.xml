@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>abb_irb14000_moveit_config</name>
+  <version>0.0.0</version>
+  <description>
+    <p>
+      Reference MoveIt configuration package for the ABB IRB 14000.
+    </p>
+    <p>
+      This package mirrors the layout of the generated ABB MoveIt config
+      packages and is intended as a starting point for a real robot-specific
+      configuration.
+    </p>
+  </description>
+  <author>Gal Gorjup</author>
+  <maintainer email="gal@acumino.ai">Gal Gorjup</maintainer>
+  <license>Apache2</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>abb_irb14000_support</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

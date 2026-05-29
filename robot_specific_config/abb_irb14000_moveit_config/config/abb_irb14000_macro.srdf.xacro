@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="abb_irb14000_srdf">
+
+    <group name="right_arm">
+      <chain base_link="robr_base_link" tip_link="robr_tool0" />
+    </group>
+
+    <group name="left_arm">
+      <chain base_link="robl_base_link" tip_link="robl_tool0" />
+    </group>
+
+    <group_state name="all_zero" group="right_arm">
+      <joint name="robr_joint_1" value="0" />
+      <joint name="robr_joint_2" value="0" />
+      <joint name="robr_joint_3" value="0" />
+      <joint name="robr_joint_4" value="0" />
+      <joint name="robr_joint_5" value="0" />
+      <joint name="robr_joint_6" value="0" />
+      <joint name="robr_joint_7" value="0" />
+    </group_state>
+
+    <group_state name="all_zero" group="left_arm">
+      <joint name="robl_joint_1" value="0" />
+      <joint name="robl_joint_2" value="0" />
+      <joint name="robl_joint_3" value="0" />
+      <joint name="robl_joint_4" value="0" />
+      <joint name="robl_joint_5" value="0" />
+      <joint name="robl_joint_6" value="0" />
+      <joint name="robl_joint_7" value="0" />
+    </group_state>
+
+    <virtual_joint type="floating" parent_frame="world" child_link="base_link" />
+
+    <disable_collisions link1="robr_base_link" link2="robr_link_1" reason="Adjacent" />
+    <disable_collisions link1="robr_link_1" link2="robr_link_2" reason="Adjacent" />
+    <disable_collisions link1="robr_link_2" link2="robr_link_3" reason="Adjacent" />
+    <disable_collisions link1="robr_link_3" link2="robr_link_4" reason="Adjacent" />
+    <disable_collisions link1="robr_link_4" link2="robr_link_5" reason="Adjacent" />
+    <disable_collisions link1="robr_link_5" link2="robr_link_6" reason="Adjacent" />
+    <disable_collisions link1="robr_link_6" link2="robr_link_7" reason="Adjacent" />
+
+    <disable_collisions link1="robl_base_link" link2="robl_link_1" reason="Adjacent" />
+    <disable_collisions link1="robl_link_1" link2="robl_link_2" reason="Adjacent" />
+    <disable_collisions link1="robl_link_2" link2="robl_link_3" reason="Adjacent" />
+    <disable_collisions link1="robl_link_3" link2="robl_link_4" reason="Adjacent" />
+    <disable_collisions link1="robl_link_4" link2="robl_link_5" reason="Adjacent" />
+    <disable_collisions link1="robl_link_5" link2="robl_link_6" reason="Adjacent" />
+    <disable_collisions link1="robl_link_6" link2="robl_link_7" reason="Adjacent" />
+
+  </xacro:macro>
+
+</robot>

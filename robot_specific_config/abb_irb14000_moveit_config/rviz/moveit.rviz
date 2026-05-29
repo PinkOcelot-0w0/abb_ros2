@@ -1,0 +1,36 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Enabled: true
+      Name: Grid
+      Plane: XY
+      Reference Frame: base_link
+    - Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: true
+      Name: MotionPlanning
+      Planning Scene Topic: /monitored_planning_scene
+      Robot Description: robot_description
+      Trajectory Topic: /display_planned_path
+      Planned Path:
+        Robot Alpha: 0.5
+        Show Robot Visual: true
+        Show Robot Collision: false
+      Planning Request:
+        Planning Group: right_arm
+        Query Goal State: true
+        Query Start State: false
+      Scene Robot:
+        Robot Alpha: 1
+        Show Robot Visual: true
+        Show Robot Collision: false
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: base_link
+  Name: root
