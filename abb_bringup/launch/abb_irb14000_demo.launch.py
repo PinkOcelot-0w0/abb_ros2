@@ -13,6 +13,7 @@ def generate_launch_description():
     robot_xacro_file = LaunchConfiguration("robot_xacro_file")
     support_package = LaunchConfiguration("support_package")
     moveit_config_file = LaunchConfiguration("moveit_config_file")
+    robot_name = LaunchConfiguration("robot_name")
     launch_rviz = LaunchConfiguration("launch_rviz")
     use_fake_hardware = LaunchConfiguration("use_fake_hardware")
     rws_ip = LaunchConfiguration("rws_ip")
@@ -43,6 +44,7 @@ def generate_launch_description():
             "support_package": support_package,
             "moveit_config_package": moveit_config_package,
             "moveit_config_file": moveit_config_file,
+            "robot_name": robot_name,
             "launch_rviz": launch_rviz,
         }.items(),
     )
@@ -76,6 +78,10 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "moveit_config_file",
                 default_value="abb_irb14000.srdf.xacro",
+            ),
+            DeclareLaunchArgument(
+                "robot_name",
+                default_value="abb_irb14000",
             ),
             DeclareLaunchArgument(
                 "use_fake_hardware",

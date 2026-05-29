@@ -30,12 +30,14 @@ def launch_setup(context, *args, **kwargs):
     support_package = LaunchConfiguration("support_package")
     moveit_config_package = LaunchConfiguration("moveit_config_package")
     moveit_config_file = LaunchConfiguration("moveit_config_file")
+    robot_name = LaunchConfiguration("robot_name")
     launch_rviz = LaunchConfiguration("launch_rviz")
 
     # MoveIt configuration
     moveit_config = (
         MoveItConfigsBuilder(
-            "abb_bringup", package_name=f"{moveit_config_package.perform(context)}"
+            f"{robot_name.perform(context)}",
+            package_name=f"{moveit_config_package.perform(context)}",
         )
         .robot_description(
             file_path=os.path.join(
@@ -169,6 +171,13 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "moveit_config_file",
             description="Name of the SRDF file",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "robot_name",
+            default_value="abb_bringup",
+            description="Robot name used by MoveItConfigsBuilder.",
         )
     )
     declared_arguments.append(
