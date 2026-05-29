@@ -104,7 +104,7 @@ def launch_setup(context, *args, **kwargs):
 
     # RViz
     rviz_base = os.path.join(
-        get_package_share_directory("abb_irb1200_5_90_moveit_config"), "rviz"
+        get_package_share_directory(f"{moveit_config_package.perform(context)}"), "rviz"
     )
     rviz_config = os.path.join(rviz_base, "moveit.rviz")
     rviz_node = Node(
